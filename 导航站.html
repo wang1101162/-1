@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>独立开发导航</title>
+    <style>
+        :root {
+            --primary-color: #0071e3;
+            --background-color: #f5f5f7;
+            --card-background: #ffffff;
+            --text-color: #1d1d1f;
+            --secondary-text: #86868b;
+            --section-spacing: 80px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 0;
+            background: linear-gradient(to bottom, #fff 0%, var(--background-color) 100%);
+            margin-bottom: var(--section-spacing);
+        }
+
+        h1 {
+            font-size: 44px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 16px 24px;
+            font-size: 17px;
+            border: none;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.2);
+        }
+
+        .section {
+            margin-bottom: var(--section-spacing);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 600;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 24px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--card-background);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: var(--text-color);
+        }
+
+        .card a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .card p {
+            color: var(--secondary-text);
+            font-size: 15px;
+            margin: 0;
+        }
+
+        .card-tag {
+            display: inline-block;
+            padding: 4px 8px;
+            background-color: rgba(0,113,227,0.1);
+            color: var(--primary-color);
+            border-radius: 6px;
+            font-size: 13px;
+            margin-top: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>独立开发导航</h1>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="搜索开发资源..." id="searchInput">
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section" id="platforms">
+            <div class="section-header">
+                <h2 class="section-title">游戏发布平台</h2>
+            </div>
+            <div class="cards-grid">
+                <div class="card" data-keywords="游戏 发布 独立游戏">
+                    <h3><a href="https://itch.io" target="_blank">itch.io</a></h3>
+                    <p>独立游戏发布平台，支持免费和付费游戏发布，有活跃的独立游戏社区</p>
+                    <span class="card-tag">游戏发布</span>
+                </div>
+                <div class="card" data-keywords="游戏 网页游戏">
+                    <h3><a href="https://www.kongregate.com" target="_blank">Kongregate</a></h3>
+                    <p>老牌网页游戏平台，支持HTML5和Flash游戏</p>
+                    <span class="card-tag">网页游戏</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="infrastructure">
+            <div class="section-header">
+                <h2 class="section-title">基础设施服务</h2>
+            </div>
+            <div class="cards-grid">
+                <div class="card" data-keywords="CDN 安全 网站加速">
+                    <h3><a href="https://www.cloudflare.com/zh-cn/" target="_blank">Cloudflare</a></h3>
+                    <p>提供CDN、DNS、DDoS防护等网站加速和安全服务</p>
+                    <span class="card-tag">网站加速</span>
+                </div>
+                <div class="card" data-keywords="支付 收款">
+                    <h3><a href="https://www.spaceship.com/" target="_blank">Spaceship</a></h3>
+                    <p>提供独立开发者支付解决方案</p>
+                    <span class="card-tag">支付服务</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="analytics">
+            <div class="section-header">
+                <h2 class="section-title">数据分析工具</h2>
+            </div>
+            <div class="cards-grid">
+                <div class="card" data-keywords="谷歌 搜索 SEO">
+                    <h3><a href="https://search.google.com/search-console" target="_blank">Google Search Console</a></h3>
+                    <p>监控网站在Google搜索中的表现和SEO优化</p>
+                    <span class="card-tag">SEO分析</span>
+                </div>
+                <div class="card" data-keywords="谷歌 分析 数据">
+                    <h3><a href="https://analytics.google.com/" target="_blank">Google Analytics</a></h3>
+                    <p>网站访问数据分析工具，了解用户行为</p>
+                    <span class="card-tag">数据分析</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const cards = document.querySelectorAll('.card');
+        const sections = document.querySelectorAll('.section');
+
+        searchInput.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            cards.forEach(card => {
+                const keywords = card.dataset.keywords.toLowerCase();
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                
+                if (keywords.includes(searchTerm) || 
+                    title.includes(searchTerm) || 
+                    description.includes(searchTerm)) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            sections.forEach(section => {
+                const visibleCards = section.querySelectorAll('.card[style=""]').length;
+                section.style.display = visibleCards === 0 ? 'none' : '';
+            });
+        });
+    </script>
+</body>
+</html>
+</html>
